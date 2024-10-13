@@ -13,7 +13,7 @@ const getUsers = async () => {
  * @param {IUser} userData
  * @returns {Promise<IUser>}
  */
-const createUser = async (userData) => {
+const createUser = async (userData: any) => {
   const newUser = new User(userData);
   return await newUser.save();
 };
