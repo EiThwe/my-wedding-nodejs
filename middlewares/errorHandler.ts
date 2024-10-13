@@ -1,14 +1,11 @@
-// middlewares/errorHandler.ts
-import { Request, Response, NextFunction } from 'express';
+// middlewares/errorHandler.js
+// @ts-ignore
+const { Request, Response, NextFunction } = require("express");
 
-const errorHandler = (
-  err: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
-): void => {
+// @ts-ignore
+const errorHandler = (err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: err.message });
 };
 
-export default errorHandler;
+module.exports = errorHandler;

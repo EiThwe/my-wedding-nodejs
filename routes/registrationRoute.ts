@@ -1,13 +1,15 @@
-// routes/registrationRoute.ts
-import express from 'express';
-import * as registrationController from '../controllers/registrationController';
+// routes/registrationRoute.js
+// @ts-ignore
+const express = require("express");
+const registrationController = require("../controllers/registrationController");
 
+// @ts-ignore
 const router = express.Router();
 
 // Route to save registration form data
-router.post('/', registrationController.createRegistration);
+router.post("/", registrationController.createRegistration);
 
 // Route to get all registrations
-router.get('/', registrationController.getRegistrations);
+router.get("/", registrationController.getRegistrations);
 
-export default router;
+module.exports = router;

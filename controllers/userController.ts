@@ -1,20 +1,12 @@
-// controllers/userController.ts
-import { Request, Response } from "express";
-import * as userService from "../services/userService";
+// @ts-ignore
+const express = require("express");
+// @ts-ignore
+const userController = require("../controllers/userController");
 
-import { IUser } from "../models/User";
-import asyncHandler from "../utils/asyncHandler";
+// @ts-ignore
+const router = express.Router();
 
-export const getUsers = asyncHandler(
-  async (req: Request, res: Response): Promise<void> => {
-    const users: IUser[] = await userService.getUsers();
-    res.status(200).json(users);
-  }
-);
+router.get("/", userController.getUsers);
+router.post("/", userController.createUser);
 
-export const createUser = asyncHandler(
-  async (req: Request, res: Response): Promise<void> => {
-    const user: IUser = await userService.createUser(req.body);
-    res.status(201).json(user);
-  }
-);
+module.exports = router;

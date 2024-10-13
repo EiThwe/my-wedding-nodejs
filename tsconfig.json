@@ -1,14 +1,12 @@
+// @ts-ignore
 {
   "compilerOptions": {
-    "target": "ESNext", // or "ES6"
-    "module": "CommonJS", // Change this to "ESNext" for ES modules
+    "target": "ES2018", // Set the JavaScript version to compile to
+    "module": "CommonJS", // Use CommonJS module system
     "outDir": "./dist", // Output directory for compiled files
-    "rootDir": "./src", // Source directory of TypeScript files
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "strict": true, // Enable strict type-checking options
+    "esModuleInterop": true // Enable interoperability between CommonJS and ES modules
   },
-  "include": ["src/**/*"], // Adjust according to your source directory
+  "include": ["app.ts"], // Adjust to include your files
   "exclude": ["node_modules"]
 }

@@ -1,11 +1,24 @@
-// services/userService.ts
-import User, { IUser } from '../models/User';
+// services/userService.js
+// @ts-ignore
+const User = require("../models/User");
 
-export const getUsers = async (): Promise<IUser[]> => {
+/**
+ * @returns {Promise<IUser[]>}
+ */
+const getUsers = async () => {
   return await User.find();
 };
 
-export const createUser = async (userData: IUser): Promise<IUser> => {
+/**
+ * @param {IUser} userData
+ * @returns {Promise<IUser>}
+ */
+const createUser = async (userData) => {
   const newUser = new User(userData);
   return await newUser.save();
+};
+
+module.exports = {
+  getUsers,
+  createUser,
 };

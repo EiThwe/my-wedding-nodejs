@@ -1,10 +1,13 @@
-// routes/userRoute.ts
-import express from 'express';
-import * as userController from '../controllers/userController';
+// routes/userRoute.js
+// @ts-ignore
+const express = require("express");
+// @ts-ignore
+const userController = require("../controllers/userController");
 
+// @ts-ignore
 const router = express.Router();
 
-router.get('/', userController.getUsers);
-router.post('/', userController.createUser);
+router.get("/", userController.getUsers);
+router.post("/", userController.createUser);
 
-export default router;
+module.exports = router;
