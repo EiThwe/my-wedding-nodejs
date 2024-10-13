@@ -32,7 +32,7 @@ app.use(mongoSanitize());
 app.use(xssClean());
 
 // Routes
-app.use("/api/registrations", registrationRoutes);
+// app.use("/api/registrations", registrationRoutes);
 
 // Error handling middleware
 app.use(errorHandler);
