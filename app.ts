@@ -17,7 +17,7 @@ const xssClean = require("xss-clean");
 dotenv.config();
 
 // Connect to MongoDB
-connectDB();
+// connectDB();
 
 const app = express();
 
