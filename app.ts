@@ -32,6 +32,9 @@ app.use(mongoSanitize());
 app.use(xssClean());
 
 // Routes
+app.get("/", (req: any, res: any) => {
+  return res.send("Denny and Thwe's wedding");
+});
 app.use("/api/registrations", registrationRoutes);
 
 // Error handling middleware
