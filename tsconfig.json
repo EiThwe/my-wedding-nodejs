@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2019", // or your desired version
-    "module": "CommonJS",
+    "target": "ESNext", // or "ES6"
+    "module": "CommonJS", // Change this to "ESNext" for ES modules
     "outDir": "./dist", // Output directory for compiled files
-    "rootDir": "./", // Root directory of your TypeScript files
+    "rootDir": "./src", // Source directory of TypeScript files
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["**/*.ts"], // Include all TypeScript files
-  "exclude": ["node_modules"] // Exclude node_modules
+  "include": ["src/**/*"], // Adjust according to your source directory
+  "exclude": ["node_modules"]
 }
