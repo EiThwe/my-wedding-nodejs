@@ -1,14 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext", // or "ES6"
-    "module": "CommonJS", // Change this to "ESNext" for ES modules
-    "outDir": "./dist", // Output directory for compiled files
-    "rootDir": "./src", // Source directory of TypeScript files
-    "strict": true,
+    "module": "CommonJS",
+    "target": "ES6",
+    "outDir": "./dist",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "moduleResolution": "node",
+    "sourceMap": true
   },
-  "include": ["src/**/*"], // Adjust according to your source directory
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"]
 }
