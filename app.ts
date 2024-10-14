@@ -1,17 +1,13 @@
-// app.js
+// app.ts
+import express, { Application } from "express";
+import dotenv from "dotenv";
+import connectDB from "./config/db";
+import registrationRoutes from "./routes/registrationRoute";
+import errorHandler from "./middlewares/errorHandler";
+import mongoSanitize from "express-mongo-sanitize";
+import cors from 'cors';
 // @ts-ignore
-const express = require("express");
-// @ts-ignore
-const dotenv = require("dotenv");
-// @ts-ignore
-const connectDB = require("./config/db");
-const registrationRoutes = require("./routes/registrationRoute");
-// @ts-ignore
-const errorHandler = require("./middlewares/errorHandler");
-const mongoSanitize = require("express-mongo-sanitize");
-const cors = require("cors");
-// @ts-ignore
-const xssClean = require("xss-clean");
+import xssClean from "xss-clean";
 
 // Load environment variables
 dotenv.config();
@@ -19,11 +15,12 @@ dotenv.config();
 // Connect to MongoDB
 connectDB();
 
-const app = express();
+const app: Application = express();
 
 // Middleware to parse JSON
 app.use(cors());
 app.use(express.json());
+
 
 // Middleware to sanitize MongoDB queries
 app.use(mongoSanitize());
@@ -32,9 +29,6 @@ app.use(mongoSanitize());
 app.use(xssClean());
 
 // Routes
-app.get("/", (req: any, res: any) => {
-  return res.send("Denny and Thwe's wedding");
-});
 app.use("/api/registrations", registrationRoutes);
 
 // Error handling middleware

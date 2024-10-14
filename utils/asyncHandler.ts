@@ -1,14 +1,10 @@
-// utils/asyncHandler.js
-// @ts-ignore
-const { Request, Response, NextFunction } = require("express");
+// utils/asyncHandler.ts
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 
-/**
- * @param {function(Request, Response, NextFunction): Promise<void>} fn - The async function to handle.
- * @returns {function(Request, Response, NextFunction)} - The wrapped async function.
- */
-// @ts-ignore
-const asyncHandler = (fn) => (req, res, next) => {
+const asyncHandler = (
+  fn: (req: Request, res: Response, next: NextFunction) => Promise<void>
+): RequestHandler => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch(next);
 };
 
-module.exports = asyncHandler;
+export default asyncHandler;

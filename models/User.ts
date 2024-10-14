@@ -1,37 +1,31 @@
-// models/User.js
-// @ts-ignore
-const mongoose = require("mongoose");
-// @ts-ignore
-const { Schema } = mongoose;
+// models/User.ts
+import mongoose, { Document, Schema } from 'mongoose';
 
-/**
- * @typedef {Object} IUser
- * @property {string} name
- * @property {string} email
- * @property {string} password
- */
+export interface IUser extends Document {
+  name: string;
+  email: string;
+  password: string;
+}
 
-const userSchema = new Schema(
+const userSchema: Schema<IUser> = new Schema(
   {
     name: {
       type: String,
-      required: [true, "Name is required"],
+      required: [true, 'Name is required'],
     },
     email: {
       type: String,
-      required: [true, "Email is required"],
+      required: [true, 'Email is required'],
       unique: true,
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
+      required: [true, 'Password is required'],
     },
   },
   { timestamps: true }
 );
 
-// @ts-ignore
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model<IUser>('User', userSchema);
 
-// Exporting the User model
-module.exports = User;
+export default User;

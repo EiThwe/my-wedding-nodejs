@@ -1,26 +1,11 @@
-// services/registrationService.js
-// @ts-ignore
-const Registration = require("../models/Registration");
+// services/registrationService.ts
+import Registration, { IRegistration } from '../models/Registration';
 
-/**
- * @param {IRegistration} data
- * @returns {Promise<IRegistration>}
- */
-// @ts-ignore
-const createRegistration = async (data) => {
+export const createRegistration = async (data: IRegistration): Promise<IRegistration> => {
   const registration = new Registration(data);
   return await registration.save();
 };
 
-/**
- * @returns {Promise<IRegistration[]>}
- */
-// @ts-ignore
-const getRegistrations = async () => {
+export const getRegistrations = async (): Promise<IRegistration[]> => {
   return await Registration.find();
-};
-
-module.exports = {
-  createRegistration,
-  getRegistrations,
 };
