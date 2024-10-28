@@ -5,7 +5,7 @@ import connectDB from "./config/db";
 import registrationRoutes from "./routes/registrationRoute";
 import errorHandler from "./middlewares/errorHandler";
 import mongoSanitize from "express-mongo-sanitize";
-import cors from 'cors';
+import cors from "cors"; // Import the cors package
 // @ts-ignore
 import xssClean from "xss-clean";
 
@@ -17,10 +17,23 @@ connectDB();
 
 const app: Application = express();
 
-// Middleware to parse JSON
-app.use(cors());
-app.use(express.json());
+// CORS configuration
+const allowedOrigins = [
+  "http://localhost:3000", // Local development
+  "https://www.dennyandthwe.com", // Production domain
+  "https://dennyandthwe.com", // Production domain
+];
 
+const corsOptions = {
+  origin: allowedOrigins,
+  credentials: true, // Allow cookies to be sent
+};
+
+// Middleware to enable CORS
+app.use(cors(corsOptions)); // Enable CORS with the specified options
+
+// Middleware to parse JSON
+app.use(express.json());
 
 // Middleware to sanitize MongoDB queries
 app.use(mongoSanitize());
