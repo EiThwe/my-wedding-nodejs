@@ -1,7 +1,9 @@
 // services/registrationService.ts
-import Registration, { IRegistration } from '../models/Registration';
+import Registration, { IRegistration } from "../models/Registration";
 
-export const createRegistration = async (data: IRegistration): Promise<IRegistration> => {
+export const createRegistration = async (
+  data: IRegistration
+): Promise<IRegistration> => {
   const registration = new Registration(data);
   return await registration.save();
 };

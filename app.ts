@@ -1,5 +1,5 @@
 // app.ts
-import express, { Application } from "express";
+import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
 import registrationRoutes from "./routes/registrationRoute";
@@ -40,6 +40,12 @@ app.use(mongoSanitize());
 
 // Middleware to sanitize user input to prevent XSS attacks
 app.use(xssClean());
+
+// Ping Pong Test
+// @ts-ignore
+app.get("/ping", (req: Request, res: Response) => {
+  return res.send("Pong - 1.0.0");
+});
 
 // Routes
 app.use("/api/registrations", registrationRoutes);
