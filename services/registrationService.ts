@@ -9,5 +9,7 @@ export const createRegistration = async (
 };
 
 export const getRegistrations = async (): Promise<IRegistration[]> => {
-  return await Registration.find();
+  return await Registration.find()
+    .select("name message -_id") // Select only `name` and `message` fields
+    .sort({ _id: 1 });
 };
