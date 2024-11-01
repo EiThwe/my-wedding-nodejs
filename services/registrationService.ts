@@ -5,7 +5,8 @@ export const createRegistration = async (
   data: IRegistration
 ): Promise<IRegistration> => {
   const registration = new Registration(data);
-  return await registration.save();
+  await registration.save();
+  return {} as IRegistration;
 };
 
 export const getRegistrations = async (): Promise<IRegistration[]> => {
