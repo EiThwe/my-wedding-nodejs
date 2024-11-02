@@ -39,10 +39,12 @@ const verifyRecaptcha = async (req, res, next) => {
     }
 
     // Optionally: you can check the score for further validation (e.g., score >= 0.5)
-    // const score = response.data.score;
-    // if (score < 0.5) {
-    //   return res.status(400).json({ message: 'reCAPTCHA verification failed with low score' });
-    // }
+    const score = response.data.score;
+    if (score < 0.5) {
+      return res
+        .status(400)
+        .json({ message: "reCAPTCHA verification failed with low score" });
+    }
 
     // If successful, move to the next middleware/controller
     next();
